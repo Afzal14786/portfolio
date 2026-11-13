@@ -1,0 +1,687 @@
+/* ==========================================
+   FEATURED PROJECTS — EDITORIAL LAYOUT
+   ========================================== */
+
+.projects-section {
+  border-top: 1px solid var(--color-line);
+
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+.projects-heading {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.projects-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  gap: 1.5rem;
+  align-items: end;
+}
+
+.projects-eyebrow,
+.featured-project-category {
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.projects-eyebrow {
+  margin: 0 0 0.8rem;
+}
+
+.projects-intro h2 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  font-weight: 650;
+
+  letter-spacing: -0.075em;
+  line-height: 1.02;
+}
+
+.projects-intro h2 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.projects-description {
+  max-width: 440px;
+
+  margin: 0;
+
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+/* Featured project collection */
+.featured-project-list {
+  margin-top: 3rem;
+
+  border-top: 1px solid var(--color-line);
+}
+
+.featured-project {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+
+  gap: 0 1rem;
+
+  padding-block: 2rem;
+
+  border-bottom: 1px solid var(--color-line);
+
+  transition:
+    border-color 220ms ease,
+    padding-inline 220ms ease;
+}
+
+.featured-project:hover {
+  border-color: rgb(82 125 255 / 45%);
+}
+
+/* Large editorial project number */
+.featured-project-number {
+  grid-column: 1;
+  grid-row: 1;
+
+  padding-top: 0.05rem;
+
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  line-height: 1;
+}
+
+/* Main project information */
+.featured-project-main {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.featured-project-category {
+  margin: 0 0 0.75rem;
+
+  color: var(--color-muted);
+  font-size: 0.57rem;
+}
+
+.featured-project-main h3 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 650;
+
+  letter-spacing: -0.07em;
+  line-height: 1.1;
+
+  transition: color 180ms ease;
+}
+
+.featured-project:hover .featured-project-main h3 {
+  color: var(--color-amber);
+}
+
+.featured-project-description {
+  max-width: 620px;
+
+  margin: 0.85rem 0 0;
+
+  color: #bac2ce;
+
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+/* Technologies */
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  margin: 1.2rem 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.project-technologies li {
+  padding: 0.35rem 0.65rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+}
+
+/* Status and repository link */
+.featured-project-meta {
+  grid-column: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 1.4rem;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.45rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.07em;
+}
+
+.status-indicator {
+  width: 0.45rem;
+  height: 0.45rem;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+}
+
+.status-completed {
+  background: #65c994;
+}
+
+.status-in-development {
+  background: var(--color-amber);
+}
+
+.project-repository-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.55rem;
+
+  color: var(--color-text);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  transition:
+    color 180ms ease,
+    gap 180ms ease;
+}
+
+.project-repository-link:hover {
+  gap: 0.8rem;
+  color: var(--color-amber);
+}
+
+/* ==========================================
+   FEATURED PROJECTS RESPONSIVENESS
+   ========================================== */
+
+@media (min-width: 681px) {
+  .featured-project {
+    grid-template-columns: 4rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+
+    padding-block: 2.5rem;
+  }
+
+  .featured-project-number {
+    font-size: 2.3rem;
+  }
+}
+
+@media (min-width: 820px) {
+  .projects-intro {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(260px, 0.55fr);
+
+    gap: 3rem;
+  }
+
+  .featured-project {
+    grid-template-columns:
+      4.5rem
+      minmax(0, 1fr)
+      minmax(170px, 0.32fr);
+
+    column-gap: 2rem;
+
+    padding-block: 3rem;
+  }
+
+  .featured-project-meta {
+    grid-column: 3;
+    grid-row: 1;
+
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-top: 0;
+    padding-block: 0.2rem;
+  }
+}
+
+/* ==========================================
+   FOUNDATION SECTION
+   ========================================== */
+
+.foundation-section {
+  border-top: 1px solid var(--color-line);
+
+  padding-block: 3.5rem;
+}
+
+.section-label {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  font-size: 0.58rem;
+}
+
+.foundation-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 1.35rem;
+
+  margin-top: 1.8rem;
+}
+
+.foundation-grid h2 {
+  max-width: 750px;
+
+  margin: 0;
+
+  font-size: clamp(2.2rem, 11vw, 3.75rem);
+  font-weight: 600;
+
+  letter-spacing: -0.07em;
+  line-height: 1.02;
+
+  text-wrap: balance;
+}
+
+.foundation-grid h2 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.foundation-grid p {
+  max-width: 460px;
+
+  margin: 0;
+
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+
+/* ==========================================
+   FOUNDATION RESPONSIVENESS
+   ========================================== */
+
+@media (min-width: 681px) {
+  .foundation-section {
+    padding-block: 5rem;
+  }
+
+  .foundation-grid h2 {
+    font-size: clamp(2.5rem, 5.2vw, 4.5rem);
+  }
+}
+
+@media (min-width: 820px) {
+  .foundation-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(250px, 0.55fr);
+
+    align-items: end;
+
+    gap: 3rem;
+
+    margin-top: 2.5rem;
+  }
+
+  .foundation-grid h2 {
+    font-size: clamp(2.5rem, 5.2vw, 5rem);
+  }
+
+  .foundation-section {
+    padding-block: clamp(3.5rem, 8vw, 7rem);
+  }
+}
+
+/* ==========================================
+   FEATURED PROJECTS — ARCHIVE LINK
+   ========================================== */
+
+.featured-projects-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1.5rem;
+
+  margin-top: 1.5rem;
+  padding: 1.25rem 0.15rem 0;
+
+  border-top: 1px solid var(--color-line);
+}
+
+.featured-projects-footer p {
+  margin: 0;
+
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.featured-projects-link {
+  min-height: 2.7rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+  gap: 0.5rem;
+
+  padding: 0.55rem 0.85rem;
+
+  border: 1px solid rgb(82 125 255 / 30%);
+  border-radius: var(--radius-pill);
+
+  background: rgb(82 125 255 / 8%);
+  color: var(--color-blue);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    gap 180ms ease;
+}
+
+.featured-projects-link svg {
+  transition: transform 180ms ease;
+}
+
+.featured-projects-link:hover {
+  gap: 0.7rem;
+
+  border-color: rgb(82 125 255 / 65%);
+  background: rgb(82 125 255 / 15%);
+  color: #ffffff;
+}
+
+.featured-projects-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================
+   FEATURED PROJECTS FOOTER RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 600px) {
+  .featured-projects-footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .featured-projects-footer p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Avoid duplicate separators before the archive link */
+.featured-project:last-child {
+  border-bottom: 0;
+}
+
+/* ==========================================
+   COMPETITIVE PROGRAMMING — HOMEPAGE PREVIEW
+   ========================================== */
+
+.cp-preview-section {
+  border-top: 1px solid var(--color-line);
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+.cp-preview-kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+}
+
+.cp-preview-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+}
+
+.cp-preview-eyebrow {
+  margin: 0 0 0.8rem;
+
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.cp-preview-copy h2 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  font-weight: 650;
+
+  letter-spacing: -0.075em;
+  line-height: 1.02;
+}
+
+.cp-preview-copy h2 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.cp-preview-description {
+  max-width: 460px;
+  margin: 0;
+
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+.cp-preview-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+
+  border-top: 1px solid var(--color-line);
+}
+
+.cp-preview-profiles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.cp-preview-profiles-label {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+}
+
+.cp-preview-platform-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cp-preview-platform-list a {
+  min-height: 2rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  padding: 0.35rem 0.65rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+  font-size: 0.65rem;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.cp-preview-platform-list a:hover {
+  border-color: rgb(82 125 255 / 45%);
+  background: rgb(82 125 255 / 8%);
+  color: var(--color-text);
+}
+
+.cp-preview-platform-list svg {
+  transition: transform 180ms ease;
+}
+
+.cp-preview-platform-list a:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.cp-preview-link {
+  min-height: 2.7rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 0.5rem;
+
+  padding: 0.55rem 0.85rem;
+
+  border: 1px solid rgb(82 125 255 / 30%);
+  border-radius: var(--radius-pill);
+
+  background: rgb(82 125 255 / 8%);
+  color: var(--color-blue);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    gap 180ms ease;
+}
+
+.cp-preview-link svg {
+  transition: transform 180ms ease;
+}
+
+.cp-preview-link:hover {
+  gap: 0.7rem;
+
+  border-color: rgb(82 125 255 / 65%);
+  background: rgb(82 125 255 / 15%);
+  color: #ffffff;
+}
+
+.cp-preview-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================
+   COMPETITIVE PROGRAMMING PREVIEW RESPONSIVENESS
+   ========================================== */
+
+@media (min-width: 820px) {
+  .cp-preview-content {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(260px, 0.55fr);
+
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .cp-preview-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  .cp-preview-kicker {
+    font-size: 0.49rem;
+    letter-spacing: 0.06em;
+  }
+
+  .cp-preview-description {
+    font-size: 0.88rem;
+  }
+}
