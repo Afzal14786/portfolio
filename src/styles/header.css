@@ -1,0 +1,288 @@
+/* ==========================================
+   HEADER — CENTERED CAPSULE NAVIGATION
+   ========================================== */
+
+.site-header-shell {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-block: 0.85rem;
+}
+
+.site-header-container {
+  position: relative;
+}
+
+/* One continuous horizontal capsule */
+.site-header {
+  width: 100%;
+  min-height: 4rem;
+
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  padding: 0.5rem 1rem;
+
+  border: 1px solid rgb(240 241 244 / 13%);
+  border-radius: 999px;
+
+  background: linear-gradient(145deg, #1b293b, #131e2c);
+
+  box-shadow: var(--shadow-nav);
+}
+
+/* Brand stays on the left */
+.wordmark {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: baseline;
+
+  padding-inline: 0.25rem;
+
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.085em;
+  line-height: 1;
+}
+
+.wordmark span {
+  margin-left: 0.035em;
+  color: var(--color-amber);
+}
+
+/* Navigation stays centered in the middle column */
+.desktop-navigation {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  justify-self: center;
+
+  gap: 0.3rem;
+}
+
+.desktop-navigation a {
+  min-height: 2.4rem;
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.45rem 0.7rem;
+
+  border: 1px solid rgb(240 241 244 / 16%);
+  border-radius: 999px;
+
+  background: rgb(11 15 22 / 20%);
+  color: var(--color-muted);
+
+  font-size: 0.72rem;
+  font-weight: 650;
+  white-space: nowrap;
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.desktop-navigation a:hover {
+  border-color: rgb(82 125 255 / 55%);
+  background: rgb(82 125 255 / 12%);
+  color: #ffffff;
+}
+
+.desktop-navigation a.is-active,
+.mobile-navigation nav a.is-active {
+  border-color: var(--color-blue);
+  background: var(--color-blue);
+  color: #ffffff;
+
+  box-shadow: 0 3px 10px rgb(82 125 255 / 22%);
+}
+
+/* GitHub stays at the far right */
+.header-github {
+  min-height: 2.4rem;
+  flex-shrink: 0;
+
+  justify-self: end;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.8rem;
+
+  border: 1px solid rgb(240 241 244 / 20%);
+  border-radius: 999px;
+
+  background: rgb(11 15 22 / 25%);
+  color: var(--color-text);
+
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.header-github:hover {
+  border-color: var(--color-blue);
+  background: rgb(82 125 255 / 13%);
+}
+
+/* ==========================================
+   MOBILE NAVIGATION
+   ========================================== */
+
+.mobile-menu-toggle {
+  display: none;
+
+  width: 2.75rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+
+  background: rgb(11 15 22 / 45%);
+  color: var(--color-text);
+
+  cursor: pointer;
+}
+
+.mobile-menu-toggle:hover {
+  border-color: var(--color-blue);
+  background: rgb(82 125 255 / 12%);
+}
+
+.mobile-navigation {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  left: 0;
+
+  width: 100%;
+  z-index: 49;
+
+  border: 1px solid rgb(240 241 244 / 12%);
+  border-radius: 1rem;
+
+  padding: 0.85rem;
+
+  background: var(--color-panel);
+
+  box-shadow: 0 16px 38px rgb(0 0 0 / 35%);
+}
+
+.mobile-navigation[hidden] {
+  display: none !important;
+}
+
+.mobile-navigation nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.mobile-navigation nav a {
+  min-width: 0;
+  min-height: 2.9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+
+  padding: 0.65rem 0.85rem;
+
+  border: 1px solid rgb(240 241 244 / 15%);
+  border-radius: 999px;
+
+  background: rgb(23 35 51 / 65%);
+  color: var(--color-muted);
+
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.mobile-navigation nav a:hover {
+  border-color: var(--color-blue);
+  background: rgb(82 125 255 / 12%);
+  color: #ffffff;
+}
+
+.mobile-github-link {
+  min-height: 2.9rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 0.7rem;
+  padding: 0.65rem 0.9rem;
+
+  border: 1px solid rgb(82 125 255 / 35%);
+  border-radius: 999px;
+
+  background: rgb(82 125 255 / 12%);
+  color: #ffffff;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.mobile-github-link span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* ==========================================
+   RESPONSIVE HEADER
+   ========================================== */
+
+@media (max-width: 1199px) {
+  .site-header {
+    min-height: 4rem;
+    grid-template-columns: 1fr auto;
+
+    justify-content: space-between;
+  }
+
+  .desktop-navigation,
+  .header-github {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 380px) {
+  .wordmark {
+    font-size: 1.5rem;
+  }
+
+  .mobile-navigation nav {
+    grid-template-columns: 1fr;
+  }
+}
