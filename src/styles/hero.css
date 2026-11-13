@@ -1,0 +1,437 @@
+/* ==========================================
+   HERO SECTION
+   ========================================== */
+
+.hero {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "copy"
+    "artwork"
+    "bottom";
+
+  align-items: center;
+
+  gap: 2.5rem;
+
+  padding-block: clamp(3.5rem, 9vw, 6rem) 1.5rem;
+}
+
+.hero-copy {
+  grid-area: copy;
+  max-width: 780px;
+}
+
+/* Technical labels and metadata */
+.eyebrow,
+.section-label,
+.hero-bottomline,
+.hero-artwork-topline,
+.hero-artwork-caption {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+
+  font-size: 0.68rem;
+  font-weight: 500;
+
+  letter-spacing: 0.15em;
+}
+
+/* Small introductory identity label */
+.eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  margin: 0 0 1.5rem;
+}
+
+.eyebrow span {
+  color: var(--color-amber);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Large personal name */
+.hero-name {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-family: var(--font-manrope), sans-serif;
+  font-size: clamp(5.5rem, 20vw, 8.5rem);
+  font-weight: 800;
+
+  letter-spacing: -0.105em;
+  line-height: 0.85;
+
+  text-wrap: nowrap;
+}
+
+/* Main professional statement */
+.hero-tagline {
+  max-width: 760px;
+
+  margin: 1.5rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.65rem, 5vw, 2.5rem);
+  font-weight: 550;
+
+  letter-spacing: -0.055em;
+  line-height: 1.25;
+
+  text-wrap: pretty;
+}
+
+.hero-tagline em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+
+  letter-spacing: -0.035em;
+}
+
+/* Supporting introduction */
+.hero-description {
+  max-width: 620px;
+
+  margin: 1.25rem 0 0;
+
+  color: #bac2ce;
+
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+/* Hero action buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  margin-top: 1.8rem;
+}
+
+.button {
+  min-height: 3rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.7rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+
+  padding: 0.7rem 1.1rem;
+
+  font-size: 0.84rem;
+  font-weight: 700;
+
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--color-blue);
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: #6a8fff;
+}
+
+.button-quiet {
+  border-color: var(--color-line);
+  color: var(--color-text);
+}
+
+.button-quiet:hover {
+  border-color: rgb(240 241 244 / 35%);
+}
+
+/* Core focus areas */
+.hero-focus-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 0.45rem 1.1rem;
+
+  margin: 1.7rem 0 0;
+  padding: 0;
+
+  list-style: none;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.025em;
+}
+
+.hero-focus-list li + li::before {
+  content: "·";
+  margin-right: 1.1rem;
+  color: var(--color-amber);
+}
+
+/* ==========================================
+   HERO CONCEPTUAL ARTWORK
+   ========================================== */
+
+.hero-artwork {
+  grid-area: artwork;
+
+  width: 100%;
+  max-width: 430px;
+
+  justify-self: center;
+
+  margin: 0;
+}
+
+.hero-artwork-frame {
+  padding: 0.8rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: 1.2rem;
+
+  background: linear-gradient(145deg, rgb(23 35 51 / 92%), rgb(16 23 34 / 96%));
+
+  box-shadow:
+    0 24px 60px rgb(0 0 0 / 22%),
+    inset 0 1px 0 rgb(255 255 255 / 5%);
+}
+
+/* Smooth visual response when the artwork is hovered. */
+.hero-artwork-frame {
+  transition:
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.hero-artwork:hover .hero-artwork-frame {
+  border-color: rgb(82 125 255 / 35%);
+
+  box-shadow:
+    0 30px 70px rgb(0 0 0 / 30%),
+    inset 0 1px 0 rgb(255 255 255 / 7%);
+}
+
+.hero-artwork-topline,
+.hero-artwork-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 0.7rem;
+
+  font-size: 0.56rem;
+  letter-spacing: 0.11em;
+}
+
+/* Image frame: keeps the image inside the artwork composition */
+.hero-artwork-placeholder {
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  aspect-ratio: 4 / 5;
+
+  margin-block: 0.8rem;
+  border-radius: 0.75rem;
+
+  /* Fallback background while the image loads */
+  background:
+    radial-gradient(ellipse at 50% 42%, rgb(245 173 70 / 13%), transparent 48%),
+    linear-gradient(145deg, #253247, #111923 75%);
+}
+
+/* Motion wrapper keeps the image animation separate from its frame. */
+.hero-artwork-image-motion {
+  position: absolute;
+  inset: 0;
+}
+
+/* Conceptual profile image */
+.hero-artwork-image {
+  z-index: 0;
+
+  object-fit: cover;
+  object-position: center;
+
+  filter: saturate(0.88) contrast(1.06);
+}
+
+/* Decorative border around the artwork */
+.hero-artwork-placeholder::before {
+  position: absolute;
+  z-index: 1;
+
+  content: "";
+
+  inset: 1.1rem;
+
+  border: 1px solid rgb(240 241 244 / 18%);
+  border-radius: 0.45rem;
+
+  pointer-events: none;
+}
+
+/* Slow-moving circular detail adds a subtle engineering-inspired accent. */
+.hero-artwork-placeholder::after {
+  position: absolute;
+  z-index: 1;
+
+  content: "";
+
+  width: 68%;
+  aspect-ratio: 1;
+
+  top: 15%;
+  left: 16%;
+
+  border: 1px solid rgb(245 173 70 / 18%);
+  border-top-color: rgb(245 173 70 / 65%);
+  border-radius: 50%;
+
+  animation: hero-artwork-orbit 28s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes hero-artwork-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-artwork-caption {
+  padding-top: 0.1rem;
+}
+
+/* Bottom metadata and scroll navigation */
+.hero-bottomline {
+  grid-area: bottom;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  border-top: 1px solid var(--color-line);
+
+  padding-top: 1.1rem;
+
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+}
+
+.hero-bottomline a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.45rem;
+
+  transition: color 180ms ease;
+}
+
+.hero-bottomline a:hover {
+  color: var(--color-amber);
+}
+
+/* ==========================================
+   RESPONSIVE HERO
+   ========================================== */
+
+@media (min-width: 820px) {
+  .hero {
+    min-height: min(760px, calc(100svh - 5.25rem));
+
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(260px, 0.8fr);
+
+    grid-template-areas:
+      "copy artwork"
+      "bottom bottom";
+
+    column-gap: clamp(2rem, 6vw, 6rem);
+    row-gap: 3rem;
+
+    padding-block: clamp(4rem, 8vw, 8rem) 2rem;
+  }
+
+  .hero-name {
+    font-size: clamp(6rem, 11.5vw, 10.5rem);
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.85rem, 2.6vw, 2.65rem);
+  }
+
+  .hero-description {
+    margin-top: 1.6rem;
+
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  }
+
+  .hero-artwork {
+    max-width: 430px;
+    justify-self: end;
+  }
+
+  .hero-bottomline {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-name {
+    font-size: 5rem;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .hero-bottomline {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 0.55rem;
+  }
+
+  .hero-artwork-caption {
+    font-size: 0.48rem;
+  }
+}
