@@ -1,0 +1,523 @@
+/* ==========================================
+   PROJECT ARCHIVE PAGE
+   ========================================== */
+
+.projects-page {
+  min-height: 100svh;
+}
+
+.project-archive-heading {
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem);
+}
+
+.project-archive-kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+}
+
+.project-archive-heading h1 {
+  max-width: 1000px;
+  margin: 1.7rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  font-weight: 750;
+  letter-spacing: -0.085em;
+  line-height: 0.98;
+}
+
+.project-archive-heading h1 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.project-archive-heading > p {
+  max-width: 650px;
+  margin: 1.1rem 0 0;
+
+  color: #bac2ce;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   COMPACT PROJECT GRID
+   ========================================== */
+
+.project-archive-collection {
+  border-top: 1px solid var(--color-line);
+  padding-block: 2rem 5rem;
+}
+
+.project-archive-collection-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-archive-collection-heading h2 {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+}
+
+.project-archive-collection-heading span {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+}
+
+.project-archive-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  align-items: start;
+  gap: 1rem;
+
+  margin-top: 1.5rem;
+}
+
+/* ==========================================
+   PROJECT CARDS
+   ========================================== */
+
+.project-archive-card {
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid var(--color-line);
+  border-radius: 0.9rem;
+
+  background: linear-gradient(145deg, rgb(23 35 51 / 72%), rgb(16 23 34 / 96%));
+
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.project-archive-card:hover {
+  border-color: rgb(82 125 255 / 48%);
+  box-shadow: 0 14px 35px rgb(0 0 0 / 20%);
+}
+
+.project-archive-card:focus-within {
+  border-color: rgb(82 125 255 / 55%);
+  box-shadow: 0 14px 35px rgb(0 0 0 / 20%);
+}
+
+/* ==========================================
+   PROJECT CARD IMAGE
+   ========================================== */
+
+.project-card-media {
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  width: 100%;
+  height: 168px;
+
+  background: var(--color-graphite);
+}
+
+.project-card-image {
+  z-index: 0;
+
+  object-fit: cover;
+  object-position: center;
+
+  filter: saturate(0.78) contrast(1.06);
+
+  transition: transform 500ms var(--ease-standard);
+}
+
+.project-archive-card:hover .project-card-image {
+  transform: scale(1.07);
+}
+
+.project-card-media-overlay {
+  position: absolute;
+  z-index: 1;
+
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgb(11 15 22 / 38%),
+    transparent 50%,
+    rgb(11 15 22 / 62%)
+  );
+
+  pointer-events: none;
+}
+
+/* Visual fallback for projects without an assigned image */
+.project-card-visual-fallback {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.65rem;
+
+  overflow: hidden;
+
+  color: var(--color-amber);
+
+  background:
+    radial-gradient(ellipse at center, rgb(82 125 255 / 22%), transparent 60%),
+    linear-gradient(145deg, #253247, #101722);
+}
+
+.project-card-visual-fallback::before {
+  position: absolute;
+  content: "";
+
+  width: 55%;
+  aspect-ratio: 1;
+
+  border: 1px solid rgb(240 241 244 / 15%);
+  border-radius: 50%;
+}
+
+.project-card-visual-fallback svg,
+.project-card-visual-fallback span {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card-visual-fallback span {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.12em;
+}
+
+/* Small image metadata */
+.project-card-media-topline {
+  position: absolute;
+  z-index: 2;
+
+  top: 0.75rem;
+  left: 0.85rem;
+  right: 0.85rem;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  color: rgb(255 255 255 / 85%);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.49rem;
+  letter-spacing: 0.09em;
+}
+
+.project-card-media-category {
+  position: absolute;
+  z-index: 2;
+
+  left: 0.85rem;
+  bottom: 0.75rem;
+
+  max-width: calc(100% - 1.7rem);
+
+  color: #ffffff;
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.09em;
+}
+
+/* ==========================================
+   PROJECT CARD INFORMATION
+   ========================================== */
+
+.project-card-content {
+  padding: 1rem 1.05rem 1.1rem;
+}
+
+.project-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
+.project-card-number,
+.project-card-status {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.51rem;
+  letter-spacing: 0.07em;
+}
+
+.project-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-card-status-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: var(--color-amber);
+}
+
+.project-card-status--completed .project-card-status-dot {
+  background: #65c994;
+}
+
+.project-card-status--in-development .project-card-status-dot {
+  background: var(--color-amber);
+}
+
+.project-card-title {
+  margin: 0.8rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  font-weight: 700;
+
+  letter-spacing: -0.06em;
+  line-height: 1.15;
+}
+
+.project-card-description {
+  display: -webkit-box;
+  overflow: hidden;
+
+  max-width: 600px;
+  margin: 0.65rem 0 0;
+
+  color: #bac2ce;
+
+  font-size: 0.8rem;
+  line-height: 1.7;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* Compact technology stack */
+.project-card-stack {
+  margin-top: 1rem;
+}
+
+.project-card-stack-label,
+.project-card-related > span {
+  display: block;
+  margin-bottom: 0.55rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.49rem;
+  letter-spacing: 0.11em;
+}
+
+.project-card-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.project-card-technologies li {
+  min-height: 1.8rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.3rem 0.5rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  background: rgb(11 15 22 / 24%);
+  color: #c3ccd8;
+
+  font-size: 0.6rem;
+  line-height: 1.2;
+}
+
+.project-technology-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-amber);
+}
+
+.project-technology-icon svg {
+  display: block;
+}
+
+.project-card-technologies .project-card-more-technologies {
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.55rem;
+}
+
+/* ==========================================
+   PROJECT LINKS AND RELATED REPOSITORIES
+   ========================================== */
+
+.project-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem 1rem;
+
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+
+  border-top: 1px solid var(--color-line);
+}
+
+.project-card-action {
+  min-height: 1.9rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  color: var(--color-muted);
+
+  font-size: 0.7rem;
+  font-weight: 650;
+
+  transition: color 180ms ease;
+}
+
+.project-card-action:hover {
+  color: var(--color-amber);
+}
+
+.project-card-action-primary {
+  color: var(--color-text);
+}
+
+.project-card-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 0.45rem 0.85rem;
+
+  margin-top: 0.8rem;
+}
+
+.project-card-related > span {
+  width: 100%;
+  margin: 0;
+}
+
+.project-card-related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  color: var(--color-muted);
+  font-size: 0.63rem;
+
+  transition: color 180ms ease;
+}
+
+.project-card-related a:hover {
+  color: var(--color-amber);
+}
+
+/* Small movement on action icons */
+.project-card-action svg,
+.project-card-related a svg {
+  transition: transform 180ms ease;
+}
+
+.project-card-action:hover svg,
+.project-card-related a:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ==========================================
+   PROJECT ARCHIVE RESPONSIVENESS
+   ========================================== */
+
+@media (min-width: 681px) {
+  .project-archive-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .project-card-media {
+    height: 165px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .project-archive-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card-content {
+    padding: 1rem 1.05rem 1.1rem;
+  }
+
+  .project-card-media {
+    height: 158px;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-archive-kicker {
+    font-size: 0.49rem;
+    letter-spacing: 0.06em;
+  }
+
+  .project-card-media {
+    height: 150px;
+  }
+
+  .project-card-content {
+    padding: 0.9rem;
+  }
+}
