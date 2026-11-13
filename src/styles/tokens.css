@@ -1,0 +1,38 @@
+/* ==========================================
+   DESIGN TOKENS
+   ========================================== */
+
+:root {
+  color-scheme: dark;
+
+  --color-midnight: #0b0f16;
+  --color-graphite: #172333;
+  --color-panel: #101722;
+  --color-blue: #527dff;
+  --color-amber: #f5ad46;
+  --color-text: #f0f1f4;
+  --color-muted: #929cab;
+  --color-line: rgb(240 241 244 / 12%);
+
+  --page-gutter: clamp(1rem, 5.2vw, 5.5rem);
+  --content-width: 1440px;
+
+  --radius-card: 1.1rem;
+  --radius-pill: 999px;
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-nav:
+    0 8px 24px rgb(0 0 0 / 25%), inset 0 1px 0 rgb(255 255 255 / 6%);
+}
+
+@theme {
+  --color-midnight: #0b0f16;
+  --color-graphite: #172333;
+  --color-electric: #527dff;
+  --color-amber: #f5ad46;
+
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-cormorant);
+  --font-mono: var(--font-jetbrains);
+}
