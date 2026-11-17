@@ -71,7 +71,7 @@ export function Hero() {
       <div className="hero-bottomline">
         <span>{siteConfig.location.toUpperCase()}</span>
 
-        <a href="#foundation">
+        <a href="#projects">
           SCROLL TO EXPLORE
           <ArrowDownRight aria-hidden="true" size={14} />
         </a>
