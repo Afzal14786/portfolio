@@ -1,0 +1,521 @@
+---
+title: "What Happens to an HTTP Request Inside a Node.js Backend?"
+description: "Follow an HTTP request from the client to a Node.js server, through Express middleware, controllers, services and database queries, and back to the client."
+date: "2026-11-17"
+category: "Backend Engineering"
+tags:
+  - Node.js
+  - HTTP
+  - Express
+  - Backend Engineering
+  - TypeScript
+published: true
+featured: true
+coverImage: "/images/writing/covers/http-request-lifecycle.jpg"
+---
+
+## Introduction
+
+When we build a backend application, we spend a lot of time writing routes, controllers, services and database queries.
+
+But what actually happens after a client sends an HTTP request?
+
+How does that request reach our application? How does the application decide which function should handle it? Where does middleware fit into the process? And how does the final response make its way back to the client?
+
+Understanding this lifecycle is important because backend engineering is not just about writing endpoints. It is about understanding how the different parts of a system work together.
+
+In this article, we will follow a request through a typical Node.js backend built with Express 5 and TypeScript.
+
+## 1. The Request-Response Mental Model
+
+At its core, HTTP follows a client-server communication model.
+
+A client sends a request to a server. The server processes that request and returns a response.
+
+A typical request might look like this:
+
+```http
+GET /api/users/42 HTTP/1.1
+Host: api.example.com
+Accept: application/json
+Authorization: Bearer <access-token>
+```
+
+The request contains several important pieces of information:
+
+- **Method:** What operation the client wants to perform.
+- **Path:** Which resource the client wants to access.
+- **Headers:** Additional information about the request.
+- **Body:** Optional data sent with methods such as POST or PUT.
+
+The server responds with a status code, headers and, usually, a response body.
+
+For example:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "data": {
+    "id": "42",
+    "name": "Afzal"
+  }
+}
+```
+
+This is the basic contract between a client and a backend.
+
+<Callout variant="info" title="A useful distinction">
+  HTTP describes the communication protocol between clients and servers. Express
+  provides an application-level framework for handling those requests inside
+  Node.js.
+</Callout>
+
+<Callout variant="warning" title="Production consideration">
+  Never expose internal database errors, stack traces, or sensitive information
+  in public API responses.
+</Callout>
+
+<Callout variant="success" title="Engineering takeaway">
+  Keeping controllers, services and repositories separate helps establish clear
+  responsibilities as an application grows.
+</Callout>
+
+## 2. What Happens Before the Request Reaches Node.js?
+
+Before the application processes a request, some networking work must happen.
+
+When a user opens a URL, the browser first needs to determine how to reach the destination server.
+
+A simplified sequence looks like this:
+
+1. The browser resolves the domain name using DNS, unless it can use a cached result.
+2. It establishes or reuses a connection to the destination.
+3. For HTTPS, the connection is secured using TLS.
+4. The client sends the HTTP request.
+5. The request may pass through intermediaries such as a CDN, reverse proxy or load balancer before reaching the application.
+
+The precise networking sequence depends on the HTTP version and connection state. For example, HTTP/3 uses QUIC rather than TCP.
+
+These operations happen outside the Express route handler. Express does not perform DNS resolution or establish the browser's TLS connection itself.
+
+The important distinction is that networking delivers the request to the server, while the backend application decides what to do with it.
+![Diagram illustrating communication between a client and a web API](/images/writing/articles/understanding-the-nodejs-http-request-lifecycle/web-api-diagram.webp "Client-server communication through a Web API")
+
+## 3. The Request Reaches the Node.js Server
+
+A Node.js application can create an HTTP server and listen for incoming connections.
+
+Express builds an application-level routing and middleware system on top of Node.js HTTP functionality.
+
+Consider a basic application setup:
+
+```ts title="server.ts"
+import express from "express";
+
+import { userRouter } from "./routes/user.routes";
+import { requestLogger } from "./middleware/request-logger";
+import { errorHandler } from "./middleware/error-handler";
+
+const app = express();
+
+// Parse incoming JSON request bodies.
+app.use(express.json());
+
+// Register request-level middleware.
+app.use(requestLogger);
+
+// Register application routes.
+app.use("/api/users", userRouter);
+
+// Error handling should come after the routes.
+app.use(errorHandler);
+
+app.listen(3000, () => {
+  console.log("API server listening on port 3000");
+});
+```
+
+When the server starts, it listens for incoming requests on port `3000`.
+
+The order of middleware registration matters. Express executes middleware in the order in which it is registered.
+
+## 4. Middleware: The First Application-Level Processing
+
+Middleware functions sit between the incoming request and the route handler.
+
+They can inspect or modify the request, perform authentication, validate information, log activity, and even terminate the request before it reaches a route.
+
+A middleware function generally has three arguments:
+
+- `req`: The incoming request.
+- `res`: The response that will be sent.
+- `next`: The function that passes control to the next middleware.
+
+Here is a simple request logger:
+
+```ts title="middleware/request-logger.ts"
+import type { RequestHandler } from "express";
+
+export const requestLogger: RequestHandler = (req, _res, next) => {
+  console.info(`${req.method} ${req.originalUrl}`);
+
+  next();
+};
+```
+
+Calling `next()` tells Express to continue processing the request.
+
+However, middleware does not always need to call `next()`.
+
+For example, authentication middleware may return a `401 Unauthorized` response when a client has not provided valid credentials.
+
+This is important: if middleware neither ends the response nor passes control forward, the request can remain pending.
+
+### Middleware execution order
+
+A common middleware sequence might look like this:
+
+1. Request logging.
+2. Request body parsing.
+3. Authentication.
+4. Authorization.
+5. Input validation.
+6. Route handler.
+7. Error handling.
+
+The actual order depends on the application. For example, authentication should run before an endpoint that requires an authenticated user.
+
+## 5. Routing: Finding the Correct Handler
+
+After the applicable middleware has allowed the request to continue, Express checks the registered routes.
+
+For our example request:
+
+```http
+GET /api/users/42
+```
+
+The application has registered a router under `/api/users`.
+
+Inside that router, we can define:
+
+```ts title="routes/user.routes.ts"
+import { Router } from "express";
+
+import { getUserById } from "../controllers/user.controller";
+
+const router = Router();
+
+router.get("/:userId", getUserById);
+
+export { router as userRouter };
+```
+
+Express matches the route and extracts the dynamic parameter.
+
+For this request:
+
+```ts
+req.params.userId === "42";
+```
+
+Notice that route matching does not require the controller to understand the entire routing structure.
+
+This separation keeps route definitions small and makes the application easier to maintain.
+
+## 6. The Controller: Handling the HTTP Interaction
+
+The controller connects the HTTP layer with the application's business logic.
+
+Its responsibilities generally include:
+
+- Reading request parameters.
+- Coordinating with the appropriate service.
+- Deciding which HTTP response to send.
+- Passing unexpected errors to error-handling middleware.
+
+Here is a simplified example:
+
+```ts title="controllers/user.controller.ts"
+import type { Request, Response } from "express";
+
+import { userService } from "../services/user.service";
+
+type UserParams = {
+  userId: string;
+};
+
+export async function getUserById(
+  req: Request<UserParams>,
+  res: Response,
+): Promise<void> {
+  const user = await userService.findById(req.params.userId);
+
+  if (!user) {
+    res.status(404).json({
+      error: "User not found",
+    });
+
+    return;
+  }
+
+  res.status(200).json({
+    data: user,
+  });
+}
+```
+
+The controller does not need to know how the user is stored in the database.
+
+It only knows that it can ask the service to find a user and then construct an HTTP response.
+
+This is a useful boundary: HTTP-specific responsibilities stay in the controller.
+
+## 7. The Service: Where Business Logic Lives
+
+The service layer contains application-specific rules and coordinates operations.
+
+For a simple read operation, the service may look very small:
+
+```ts title="services/user.service.ts"
+import { userRepository } from "../repositories/user.repository";
+
+export const userService = {
+  async findById(userId: string) {
+    return userRepository.findById(userId);
+  },
+};
+```
+
+At first glance, this may look unnecessary because the service simply calls the repository.
+
+However, as the application grows, the service can coordinate multiple repositories, enforce business rules, check permissions, and manage transactions.
+
+For example, creating an order might require checking product availability, calculating totals, reserving inventory and creating an order record.
+
+Those operations belong in the application or domain logic rather than in an HTTP controller.
+
+The goal is not to introduce a service for every trivial function. The goal is to keep responsibilities separated when that separation provides value.
+
+## 8. The Repository: Accessing the Database
+
+The repository layer isolates database operations from the rest of the application.
+
+For example, a repository can retrieve a user using a parameterized SQL query:
+
+```ts title="repositories/user.repository.ts"
+import { pool } from "../database/pool";
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export const userRepository = {
+  async findById(userId: string): Promise<User | null> {
+    const result = await pool.query<User>(
+      `
+        SELECT id, name, email
+        FROM users
+        WHERE id = $1
+      `,
+      [userId],
+    );
+
+    return result.rows[0] ?? null;
+  },
+};
+```
+
+Here, `pool` represents an already-configured PostgreSQL connection pool.
+
+The `$1` placeholder keeps user input separate from the SQL statement. This is preferable to constructing SQL through string concatenation.
+
+The repository returns either a matching user or `null`.
+
+It doesn't decide whether the HTTP response should be `200`, `404`, or something else. That decision belongs to the HTTP-facing layer.
+
+## 9. The Response Travels Back to the Client
+
+Once the repository returns its result, control moves back through the awaited calls:
+
+```text
+Repository
+    |
+    v
+Service
+    |
+    v
+Controller
+    |
+    v
+HTTP Response
+    |
+    v
+Client
+```
+
+For a successful request, the controller sends:
+
+```ts
+res.status(200).json({
+  data: user,
+});
+```
+
+The client receives a JSON response with an appropriate HTTP status code.
+
+Some common response codes include:
+
+| Status | Meaning                                   |
+| ------ | ----------------------------------------- |
+| 200    | Request completed successfully            |
+| 201    | Resource created successfully             |
+| 204    | Request succeeded without a response body |
+| 400    | Invalid request                           |
+| 401    | Authentication required or invalid        |
+| 403    | Access is forbidden                       |
+| 404    | Resource not found                        |
+| 409    | Request conflicts with existing state     |
+| 500    | Unexpected server error                   |
+
+Choosing the right status code makes the API easier for clients to understand and integrate with.
+
+## 10. What Happens When Something Goes Wrong?
+
+Not every request completes successfully.
+
+A database connection may fail, a service may reject an operation, or an unexpected error may occur.
+
+Instead of handling every possible failure independently in every route, Express supports centralized error-handling middleware.
+
+For example:
+
+```ts title="middleware/error-handler.ts"
+import type { ErrorRequestHandler } from "express";
+
+export const errorHandler: ErrorRequestHandler = (error, _req, res, next) => {
+  // Let Express handle errors if the response has already started.
+  if (res.headersSent) {
+    next(error);
+    return;
+  }
+
+  // The full error should be recorded in server-side logs.
+  console.error(error);
+
+  res.status(500).json({
+    error: {
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Something went wrong.",
+    },
+  });
+};
+```
+
+Because this is error-handling middleware, it has four arguments.
+
+With Express 5, rejected promises from asynchronous route handlers and middleware are forwarded to error handling automatically.
+
+That is why the controller example can use `async` without manually wrapping every operation in a `try/catch`.
+
+In production, error responses should not expose database details, internal stack traces, credentials or other sensitive information.
+
+## 11. Where Does Node.js's Event Loop Fit Into This?
+
+There is one more important concept to understand.
+
+When a request performs an asynchronous database operation, the application often has to wait for the database to respond.
+
+Consider:
+
+```ts
+const user = await userRepository.findById(userId);
+```
+
+The `await` pauses execution of the current async function until its promise settles. It does not mean that Node.js must block the entire JavaScript event loop while the database is working.
+
+During asynchronous I/O, Node.js can continue processing other work.
+
+This is one reason Node.js can handle many concurrent I/O-heavy connections effectively.
+
+However, CPU-intensive synchronous work can still block the event loop.
+
+For example:
+
+```ts
+function performExpensiveCalculation(): number {
+  let result = 0;
+
+  for (let index = 0; index < 1_000_000_000; index++) {
+    result += index;
+  }
+
+  return result;
+}
+```
+
+If this function runs on the main JavaScript thread, other callbacks and requests that need that thread may be delayed.
+
+The important distinction is:
+
+- Asynchronous I/O allows the event loop to handle other work while an operation is pending.
+- Synchronous CPU-heavy work occupies the JavaScript thread until it finishes.
+
+For expensive CPU-bound tasks, worker threads or separate background-processing systems may be more appropriate.
+
+## 12. Putting the Complete Lifecycle Together
+
+Let's bring everything together.
+
+For the request:
+
+```http
+GET /api/users/42
+```
+
+The simplified application-level journey is:
+
+1. Node.js receives the HTTP request.
+2. Express begins executing the registered middleware.
+3. The router matches `/api/users/:userId`.
+4. The controller calls the user service.
+5. The service delegates the lookup to the repository.
+6. The repository queries PostgreSQL.
+7. The result returns to the service and controller.
+8. The controller sends the HTTP response.
+9. The client receives the result.
+
+The actual application may have more steps, including authentication, caching, rate limiting, distributed tracing, transaction management and reverse proxies.
+
+The important part is understanding where each responsibility belongs.
+
+## Final Thoughts
+
+A backend endpoint is more than a function that receives a request and returns JSON.
+
+It is the result of several layers working together: networking, HTTP handling, middleware, routing, application logic, database access and response handling.
+
+Once this lifecycle becomes clear, debugging and designing backend applications becomes much easier.
+
+Instead of asking only, "Why is this endpoint failing?", we can ask more precise questions:
+
+- Did the request reach the application?
+- Did middleware reject or modify it?
+- Did the router match the expected path?
+- Did the service enforce the correct rules?
+- Did the database operation succeed?
+- Was the response constructed correctly?
+
+That way of thinking is what helps turn individual endpoints into reliable backend systems.
+
+## References
+
+- [MDN — Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview)
+- [Express 5 — Writing Middleware](https://expressjs.com/en/5x/guide/writing-middleware/)
+- [Express — Error Handling](https://expressjs.com/en/guide/error-handling/)
+- [Node.js — HTTP API](https://nodejs.org/api/http.html)
+- [Node.js — The Event Loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick)
