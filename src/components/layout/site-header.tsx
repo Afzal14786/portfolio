@@ -19,7 +19,7 @@ const navigationItems: NavigationItem[] = [
     href: "/competitive-programming",
   },
   { label: "Systems", href: "#systems", sectionId: "systems" },
-  { label: "Writing", href: "#writing", sectionId: "writing" },
+  { label: "Writing", href: "/writing"},
   {
     label: "Experience",
     href: "#experience",
