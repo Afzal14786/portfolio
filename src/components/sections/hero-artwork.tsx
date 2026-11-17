@@ -97,7 +97,7 @@ export function HeroArtwork() {
             }
           >
             <Image
-              src="/images/profile/meee.jpeg"
+              src="/images/profile/hero.jpeg"
               alt="Conceptual geometric artwork representing creativity, engineering, and systems thinking"
               fill
               priority
