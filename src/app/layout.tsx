@@ -37,6 +37,18 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   applicationName: siteConfig.name,
   metadataBase: new URL(siteConfig.url),
+
+  // Custom Afzal brand mark for browser tabs.
+  icons: {
+    icon: [
+      {
+        url: "/icons/icon.png?v=2",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+  },
+
   openGraph: {
     type: "website",
     title: siteConfig.title,
