@@ -218,15 +218,13 @@
   box-shadow:
     0 24px 60px rgb(0 0 0 / 22%),
     inset 0 1px 0 rgb(255 255 255 / 5%);
-}
 
-/* Smooth visual response when the artwork is hovered. */
-.hero-artwork-frame {
   transition:
     border-color 350ms ease,
     box-shadow 350ms ease;
 }
 
+/* Smooth visual response when the artwork is hovered. */
 .hero-artwork:hover .hero-artwork-frame {
   border-color: rgb(82 125 255 / 35%);
 
@@ -247,11 +245,9 @@
   letter-spacing: 0.11em;
 }
 
-/* Image frame: keeps the image inside the artwork composition */
+/* Clean rectangular portrait with no decorative overlays. */
 .hero-artwork-placeholder {
   position: relative;
-  isolation: isolate;
-
   overflow: hidden;
 
   aspect-ratio: 4 / 5;
@@ -259,7 +255,7 @@
   margin-block: 0.8rem;
   border-radius: 0.75rem;
 
-  /* Fallback background while the image loads */
+  /* Fallback background while the image loads. */
   background:
     radial-gradient(ellipse at 50% 42%, rgb(245 173 70 / 13%), transparent 48%),
     linear-gradient(145deg, #253247, #111923 75%);
@@ -279,53 +275,6 @@
   object-position: center;
 
   filter: saturate(0.88) contrast(1.06);
-}
-
-/* Decorative border around the artwork */
-.hero-artwork-placeholder::before {
-  position: absolute;
-  z-index: 1;
-
-  content: "";
-
-  inset: 1.1rem;
-
-  border: 1px solid rgb(240 241 244 / 18%);
-  border-radius: 0.45rem;
-
-  pointer-events: none;
-}
-
-/* Slow-moving circular detail adds a subtle engineering-inspired accent. */
-.hero-artwork-placeholder::after {
-  position: absolute;
-  z-index: 1;
-
-  content: "";
-
-  width: 68%;
-  aspect-ratio: 1;
-
-  top: 15%;
-  left: 16%;
-
-  border: 1px solid rgb(245 173 70 / 18%);
-  border-top-color: rgb(245 173 70 / 65%);
-  border-radius: 50%;
-
-  animation: hero-artwork-orbit 28s linear infinite;
-
-  pointer-events: none;
-}
-
-@keyframes hero-artwork-orbit {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .hero-artwork-caption {
