@@ -1,0 +1,1897 @@
+/* ==========================================
+   WRITING PAGE
+   ========================================== */
+
+.writing-page {
+  min-height: 100svh;
+}
+
+.writing-heading {
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem);
+}
+
+.writing-kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+}
+
+.writing-heading h1 {
+  max-width: 1050px;
+  margin: 1.7rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.8rem, 7vw, 5.8rem);
+  font-weight: 750;
+  letter-spacing: -0.085em;
+  line-height: 0.98;
+}
+
+.writing-heading h1 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.writing-introduction {
+  max-width: 650px;
+  margin: 1.25rem 0 0;
+
+  color: #bac2ce;
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+/* ==========================================
+   WRITING TOPICS
+   ========================================== */
+
+.writing-topics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+
+  margin-top: 2.5rem;
+}
+
+.writing-topics-label {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+.writing-topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.writing-topic {
+  padding: 0.5rem 0.75rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: #c4ccd7;
+  background: rgb(23 35 51 / 48%);
+
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   WRITING COLLECTION
+   ========================================== */
+
+.writing-collection {
+  border-top: 1px solid var(--color-line);
+  padding-block: 2rem 5rem;
+}
+
+.writing-collection-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.writing-collection-heading h2 {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+}
+
+.writing-collection-heading > span {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================
+   EMPTY STATE
+   ========================================== */
+
+.writing-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin-top: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  background:
+    radial-gradient(ellipse at 0% 0%, rgb(82 125 255 / 9%), transparent 60%),
+    linear-gradient(145deg, rgb(23 35 51 / 65%), rgb(16 23 34 / 90%));
+}
+
+.writing-empty-index {
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+}
+
+.writing-empty-state h3 {
+  margin: 1.25rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+}
+
+.writing-empty-state p {
+  max-width: 570px;
+  margin: 0.75rem 0 0;
+
+  color: #bac2ce;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   ARTICLE ENTRIES
+   ========================================== */
+
+.writing-list {
+  margin-top: 1.5rem;
+
+  border-top: 1px solid var(--color-line);
+}
+
+.writing-entry {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.writing-entry-link {
+  display: block;
+  padding: 1.5rem 0;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    padding-inline 220ms ease,
+    background-color 220ms ease;
+}
+
+.writing-entry-link:hover {
+  padding-inline: 0.75rem;
+  background: rgb(23 35 51 / 30%);
+}
+
+.writing-entry-link:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+.writing-entry-meta,
+.writing-entry-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.writing-entry-meta {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+.writing-entry h3 {
+  margin: 0.8rem 0 0;
+
+  color: var(--color-text);
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+
+  transition: color 220ms ease;
+}
+
+.writing-entry-link:hover h3 {
+  color: var(--color-amber);
+}
+
+.writing-entry > a > p {
+  max-width: 680px;
+  margin: 0.55rem 0 0;
+
+  color: #bac2ce;
+  font-size: 0.83rem;
+  line-height: 1.75;
+}
+
+.writing-entry-footer {
+  margin-top: 1.1rem;
+}
+
+.writing-entry-footer > span {
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+}
+
+.writing-entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.writing-entry-tags span {
+  padding: 0.3rem 0.55rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+  font-size: 0.63rem;
+}
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+@media (max-width: 600px) {
+  .writing-kicker {
+    align-items: flex-start;
+    font-size: 0.54rem;
+  }
+
+  .writing-heading h1 {
+    font-size: clamp(2.65rem, 12vw, 4rem);
+  }
+
+  .writing-topics {
+    margin-top: 2rem;
+  }
+
+  .writing-collection-heading h2 {
+    font-size: 1.25rem;
+  }
+
+  .writing-empty-state {
+    padding: 1.35rem;
+  }
+
+  .writing-entry-link:hover {
+    padding-inline: 0;
+  }
+}
+
+/* ==========================================
+   INDIVIDUAL ARTICLE PAGE
+   ========================================== */
+
+.writing-article-page {
+  min-height: 100svh;
+}
+
+.writing-article-shell {
+  padding-block: 2rem 5.5rem;
+}
+
+.writing-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.writing-back-link:hover {
+  color: var(--color-amber);
+}
+
+.writing-article {
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+
+/* ==========================================
+   ARTICLE HEADER
+   ========================================== */
+
+.writing-article-header {
+  max-width: 820px;
+  margin-inline: auto;
+
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.writing-article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.07em;
+}
+
+.writing-article-meta span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 0.4rem 0.7rem;
+
+  border: 1px solid rgb(245 173 70 / 28%);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-amber);
+  background: rgb(245 173 70 / 6%);
+}
+
+.writing-article-meta time {
+  color: var(--color-muted);
+}
+
+.writing-article-header h1 {
+  max-width: 800px;
+  margin: 1.6rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.5rem, 5.6vw, 4.6rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 1.08;
+
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.writing-article-description {
+  max-width: 700px;
+  margin: 1.25rem 0 0;
+
+  color: #bac2ce;
+
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.85;
+}
+
+.writing-article-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  margin-top: 1.6rem;
+}
+
+.writing-article-details > span {
+  flex-shrink: 0;
+
+  padding: 0.45rem 0.7rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.07em;
+}
+
+/* ==========================================
+   ARTICLE TAGS
+   ========================================== */
+
+.writing-article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.writing-article-tags span {
+  padding: 0.3rem 0.6rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+  font-size: 0.63rem;
+}
+
+/* ==========================================
+   ARTICLE BODY — READING TYPOGRAPHY
+   ========================================== */
+
+.writing-article-body {
+  max-width: 720px;
+  margin: 2.75rem auto 0;
+
+  color: #c5cdd8;
+
+  font-size: clamp(0.96rem, 1vw, 1.02rem);
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+/* Keep the first content element close to the reading area. */
+.writing-article-body > :first-child {
+  margin-top: 0;
+}
+
+.writing-article-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Main article sections. */
+.writing-article-body h2 {
+  margin: 3.15rem 0 0.95rem;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.55rem, 3vw, 2.05rem);
+  font-weight: 650;
+  letter-spacing: -0.05em;
+  line-height: 1.28;
+}
+
+/* Subsections within an article section. */
+.writing-article-body h3 {
+  margin: 2.2rem 0 0.75rem;
+
+  color: var(--color-text);
+
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.35;
+}
+
+.writing-article-body h4,
+.writing-article-body h5,
+.writing-article-body h6 {
+  margin: 1.8rem 0 0.65rem;
+
+  color: var(--color-text);
+
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* Paragraph rhythm for long-form technical reading. */
+.writing-article-body p {
+  margin: 1.15rem 0;
+  line-height: inherit;
+}
+
+.writing-article-body strong {
+  color: var(--color-text);
+  font-weight: 650;
+}
+
+.writing-article-body a {
+  color: var(--color-amber);
+  text-decoration: underline;
+  text-decoration-color: rgb(245 173 70 / 35%);
+  text-underline-offset: 4px;
+}
+
+.writing-article-body a:hover {
+  text-decoration-color: var(--color-amber);
+}
+
+.writing-article-body ul,
+.writing-article-body ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.writing-article-body ul {
+  list-style: disc;
+}
+
+.writing-article-body ol {
+  list-style: decimal;
+}
+
+.writing-article-body li {
+  margin-block: 0.45rem;
+  padding-left: 0.25rem;
+}
+
+.writing-article-body li::marker {
+  color: var(--color-amber);
+}
+
+.writing-article-body blockquote {
+  margin: 2.2rem 0;
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-amber);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  padding: 1.2rem 1.4rem;
+
+  color: #c5cdd8;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgb(245 173 70 / 7%), transparent 65%),
+    rgb(23 35 51 / 45%);
+
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.writing-article-body blockquote p {
+  margin: 0.4rem 0;
+}
+
+.writing-article-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.writing-article-body blockquote strong {
+  color: var(--color-amber);
+}
+
+.writing-article-body hr {
+  margin-block: 2.5rem;
+  border: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+/* ==========================================
+   ARTICLE IMAGES AND CAPTIONS
+   ========================================== */
+
+.writing-article-body .writing-article-figure {
+  width: 100%;
+  margin: clamp(1.75rem, 4vw, 2.5rem) 0;
+
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  background: #101722;
+}
+
+.writing-article-body .writing-article-figure img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+
+  border: 0;
+  border-radius: 0;
+}
+
+.writing-article-figure figcaption {
+  margin: 0;
+  padding: 0.85rem 1rem;
+
+  border-top: 1px solid var(--color-line);
+
+  color: var(--color-muted);
+  background: rgb(16 23 34 / 95%);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.67rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.writing-article-image-fallback {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  padding: 1.5rem;
+
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius-card);
+
+  color: var(--color-muted);
+  background: #101722;
+
+  text-align: center;
+}
+
+.writing-article-image-fallback > span {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.writing-article-image-fallback p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+/* ==========================================
+   ARTICLE CODE BLOCKS
+   ========================================== */
+
+.writing-article-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.3rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: 0.75rem;
+
+  color: #dce3ee;
+  background: #080d15;
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  tab-size: 2;
+}
+
+.writing-article-body :not(pre) > code {
+  padding: 0.18rem 0.4rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: 0.3rem;
+
+  color: #f5c982;
+  background: rgb(23 35 51 / 75%);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.82em;
+}
+
+.writing-article-body pre code {
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  color: inherit;
+  background: transparent;
+
+  font-size: inherit;
+}
+
+/* ==========================================
+   ARTICLE TABLES
+   ========================================== */
+
+.writing-article-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+
+  font-size: 0.82rem;
+}
+
+.writing-article-body th,
+.writing-article-body td {
+  border: 1px solid var(--color-line);
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+}
+
+.writing-article-body th {
+  color: var(--color-text);
+  background: rgb(23 35 51 / 75%);
+}
+
+.writing-article-body td {
+  color: #bac2ce;
+}
+
+/* ==========================================
+   ARTICLE FOOTER
+   ========================================== */
+
+.writing-article-footer {
+  max-width: 760px;
+  margin: 3rem auto 0;
+  border-top: 1px solid var(--color-line);
+  padding-top: 1.5rem;
+}
+
+.writing-article-footer a {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.writing-article-footer a:hover {
+  color: var(--color-amber);
+}
+
+/* ==========================================
+   ARTICLE RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 600px) {
+  .writing-article-shell {
+    padding-block: 1.5rem 4rem;
+  }
+
+  .writing-article {
+    margin-top: 2.25rem;
+  }
+
+  .writing-article-header h1 {
+    font-size: clamp(2.15rem, 9vw, 3.2rem);
+    letter-spacing: -0.06em;
+    line-height: 1.12;
+  }
+
+  .writing-article-description {
+    font-size: 0.9rem;
+  }
+
+  .writing-article-body {
+    margin-top: 2rem;
+    font-size: 0.94rem;
+    line-height: 1.8;
+  }
+
+  .writing-article-body pre {
+    padding: 1rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* =========================================================
+   WRITING ARCHIVE — EDITORIAL ARTICLE CARDS
+   ========================================================= */
+
+.writing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+.writing-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  background: #101722;
+
+  box-shadow: 0 5px 18px rgb(0 0 0 / 12%);
+
+  opacity: 0;
+  animation: writing-card-enter 700ms cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+
+  transition:
+    transform 350ms cubic-bezier(0.2, 0.75, 0.3, 1),
+    border-color 300ms ease,
+    box-shadow 350ms ease;
+}
+
+/* Stagger the entrance so cards don't appear simultaneously. */
+.writing-card:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.writing-card:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.writing-card:nth-child(4) {
+  animation-delay: 270ms;
+}
+
+.writing-card:nth-child(5) {
+  animation-delay: 360ms;
+}
+
+.writing-card:nth-child(6) {
+  animation-delay: 450ms;
+}
+
+@keyframes writing-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.writing-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgb(82 125 255 / 65%);
+
+  box-shadow:
+    0 20px 45px rgb(0 0 0 / 28%),
+    0 0 24px rgb(82 125 255 / 9%);
+}
+
+.writing-card-link {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  border-radius: inherit;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   CARD COVER
+   ========================================================= */
+
+.writing-card-cover {
+  position: relative;
+  overflow: hidden;
+
+  aspect-ratio: 16 / 10;
+
+  border-bottom: 1px solid var(--color-line);
+
+  background: #172333;
+}
+
+.writing-card-image {
+  object-fit: cover;
+
+  transition: transform 600ms cubic-bezier(0.2, 0.75, 0.3, 1);
+}
+
+.writing-card:hover .writing-card-image {
+  transform: scale(1.08);
+}
+
+/* Fallback artwork for articles without a dedicated cover image. */
+.writing-card-cover-fallback {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+  padding: 1.4rem;
+
+  background:
+    radial-gradient(circle at 80% 25%, rgb(82 125 255 / 16%), transparent 40%),
+    linear-gradient(135deg, #172333 0%, #0b0f16 100%);
+}
+
+.writing-card-cover-fallback::before,
+.writing-card-cover-fallback::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  content: "";
+  pointer-events: none;
+
+  transition:
+    transform 600ms cubic-bezier(0.2, 0.75, 0.3, 1),
+    border-color 400ms ease;
+}
+
+.writing-card-cover-fallback::before {
+  width: 190px;
+  height: 190px;
+
+  border: 1px solid rgb(146 156 171 / 20%);
+  border-radius: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.writing-card-cover-fallback::after {
+  width: 135px;
+  height: 135px;
+
+  border: 1px solid rgb(245 173 70 / 28%);
+
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.writing-card:hover .writing-card-cover-fallback::before {
+  border-color: rgb(82 125 255 / 55%);
+  transform: translate(-50%, -50%) scale(1.18);
+}
+
+.writing-card:hover .writing-card-cover-fallback::after {
+  border-color: rgb(245 173 70 / 55%);
+  transform: translate(-50%, -50%) rotate(75deg) scale(1.12);
+}
+
+.writing-card-cover-index,
+.writing-card-cover-caption {
+  position: relative;
+  z-index: 1;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.writing-card-cover-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+
+  color: rgb(240 241 244 / 90%);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-style: italic;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    transform 500ms ease,
+    color 300ms ease;
+}
+
+.writing-card:hover .writing-card-cover-mark {
+  color: var(--color-amber);
+  transform: translate(-50%, -50%) scale(1.12) rotate(-5deg);
+}
+
+.writing-card-cover-caption {
+  color: var(--color-amber);
+}
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.writing-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  padding: 1.4rem;
+}
+
+.writing-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.writing-card-meta span {
+  color: var(--color-amber);
+}
+
+.writing-card-content h3 {
+  margin: 1.15rem 0 0.65rem;
+
+  color: var(--color-text);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.2;
+
+  transition:
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.writing-card:hover .writing-card-content h3 {
+  color: var(--color-amber);
+  transform: translateX(3px);
+}
+
+.writing-card-description {
+  margin: 0;
+
+  color: #bac2ce;
+
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.writing-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.85rem;
+
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.writing-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.writing-card-tags span {
+  padding: 0.3rem 0.55rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+
+  font-size: 0.63rem;
+}
+
+.writing-card-reading-time {
+  flex-shrink: 0;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+
+/* Keyboard accessibility. */
+.writing-card-link:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: -4px;
+  border-radius: inherit;
+}
+
+/* =========================================================
+   RESPONSIVE CARDS
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .writing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .writing-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .writing-card-content {
+    padding: 1.15rem;
+  }
+
+  .writing-card-cover-fallback {
+    padding: 1.15rem;
+  }
+
+  .writing-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Avoid unnecessary motion for users who request reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .writing-card {
+    opacity: 1;
+    animation: none;
+    transition: none;
+  }
+
+  .writing-card:hover {
+    transform: none;
+  }
+
+  .writing-card-image,
+  .writing-card-cover-fallback::before,
+  .writing-card-cover-fallback::after,
+  .writing-card-cover-mark,
+  .writing-card-content h3 {
+    transition: none;
+  }
+
+  .writing-card:hover .writing-card-image,
+  .writing-card:hover .writing-card-cover-fallback::before,
+  .writing-card:hover .writing-card-cover-fallback::after,
+  .writing-card:hover .writing-card-cover-mark,
+  .writing-card:hover .writing-card-content h3 {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   ARTICLE COVER IMAGE
+   ========================================== */
+
+.writing-article-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+  margin: 2.25rem 0 0;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  background: #101722;
+}
+
+.writing-article-cover img {
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .writing-article-cover {
+    margin-top: 1.75rem;
+  }
+}
+
+/* ==========================================
+   SYNTAX-HIGHLIGHTED CODE BLOCKS
+   ========================================== */
+
+/* rehype-pretty-code wraps highlighted blocks in a figure. */
+.writing-article-body [data-rehype-pretty-code-figure] {
+  min-width: 0;
+  margin: 1.75rem 0;
+}
+
+/* Preserve our custom dark background while Shiki colors individual tokens. */
+.writing-article-body [data-rehype-pretty-code-figure] pre {
+  margin: 0;
+  overflow-x: auto;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  background: #080d15;
+}
+
+/* Style optional filenames specified in MDX code-fence metadata. */
+.writing-article-body [data-rehype-pretty-code-title] {
+  margin: 0;
+  padding: 0.7rem 1.1rem;
+
+  border: 1px solid var(--color-line);
+  border-bottom: 0;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+
+  color: var(--color-muted);
+  background: #101722;
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.7rem;
+}
+
+.writing-article-body [data-rehype-pretty-code-title] + pre {
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+}
+
+/* Keep highlighted lines aligned inside horizontally scrollable blocks. */
+.writing-article-body [data-rehype-pretty-code-figure] [data-line] {
+  padding-inline: 0.2rem;
+}
+
+/* Distinguish intentionally highlighted lines without hiding token colors. */
+.writing-article-body [data-highlighted-line] {
+  background: rgb(82 125 255 / 10%);
+  border-left: 2px solid var(--color-blue);
+}
+
+/* ==========================================
+   MDX CALLOUT BLOCKS
+   ========================================== */
+
+.writing-callout {
+  --callout-accent: var(--color-amber);
+
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.25rem;
+
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--callout-accent);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+
+  background: rgb(23 35 51 / 45%);
+}
+
+.writing-callout[data-variant="info"] {
+  --callout-accent: var(--color-blue);
+}
+
+.writing-callout[data-variant="warning"] {
+  --callout-accent: #f5ad46;
+
+  background: rgb(245 173 70 / 5%);
+}
+
+.writing-callout[data-variant="success"] {
+  --callout-accent: #66c995;
+
+  background: rgb(102 201 149 / 5%);
+}
+
+.writing-callout-title {
+  margin: 0 0 0.65rem;
+
+  color: var(--callout-accent);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.writing-callout-content {
+  color: #c5cdd8;
+
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.writing-callout-content > :first-child {
+  margin-top: 0;
+}
+
+.writing-callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+.writing-callout-content strong {
+  color: var(--color-text);
+}
+
+/* ==========================================
+   ARTICLE TABLE OF CONTENTS
+   ========================================== */
+
+.writing-article-toc {
+  max-width: 720px;
+  margin: 1.75rem auto 0;
+  padding: 1.25rem 1.4rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  background: rgb(23 35 51 / 35%);
+}
+
+.writing-article-toc h2 {
+  margin: 0;
+
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.writing-article-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1.5rem;
+
+  margin: 1rem 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.writing-article-toc li {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.writing-article-toc li[data-level="3"] {
+  padding-left: 0.9rem;
+}
+
+.writing-article-toc a {
+  color: #bac2ce;
+
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.writing-article-toc a:hover {
+  color: var(--color-amber);
+}
+
+.writing-article-toc a:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+/* Account for the site header when navigating to an article heading. */
+.writing-article-body h2[id],
+.writing-article-body h3[id] {
+  scroll-margin-top: 6rem;
+}
+
+@media (max-width: 600px) {
+  .writing-article-toc {
+    padding: 1rem;
+  }
+
+  .writing-article-toc ol {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+}
+
+/* =========================================================
+   ARTICLE LAYOUT — MAIN CONTENT + STICKY TOC
+   ========================================================= */
+
+.writing-article {
+  max-width: 1160px;
+  margin: 3rem auto 0;
+}
+
+.writing-article-cover {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.writing-article-layout {
+  display: grid;
+  grid-template-areas: "main toc";
+  grid-template-columns: minmax(0, 760px) minmax(210px, 250px);
+  justify-content: center;
+  align-items: start;
+
+  gap: clamp(2rem, 5vw, 4.5rem);
+
+  margin: 2.75rem auto 0;
+}
+
+.writing-article-main {
+  grid-area: main;
+  min-width: 0;
+}
+
+/* The reading column now gets its width from the grid. */
+.writing-article-main .writing-article-body {
+  max-width: none;
+  margin: 0;
+}
+
+/* =========================================================
+   STICKY TABLE OF CONTENTS
+   ========================================================= */
+
+.writing-article-layout > .writing-article-toc {
+  grid-area: toc;
+
+  position: sticky;
+  top: 6rem;
+  align-self: start;
+
+  width: 100%;
+  max-width: none;
+  max-height: calc(100svh - 8rem);
+
+  margin: 0;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-muted) transparent;
+}
+
+.writing-article-toc ol {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.7rem;
+}
+
+.writing-article-toc li[data-level="3"] {
+  padding-left: 1rem;
+}
+
+/* =========================================================
+   RESPONSIVE ARTICLE LAYOUT
+   ========================================================= */
+
+/* Tablet: move the TOC above the article content. */
+@media (max-width: 1024px) {
+  .writing-article {
+    max-width: 900px;
+  }
+
+  .writing-article-layout {
+    grid-template-areas:
+      "toc"
+      "main";
+
+    grid-template-columns: minmax(0, 760px);
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .writing-article-layout > .writing-article-toc {
+    position: static;
+    max-height: none;
+  }
+}
+
+/* Mobile: keep the TOC compact and easy to navigate. */
+@media (max-width: 600px) {
+  .writing-article-layout {
+    margin-top: 2rem;
+    gap: 1.75rem;
+  }
+
+  .writing-article-layout > .writing-article-toc {
+    padding: 1rem;
+  }
+
+  .writing-article-main .writing-article-body {
+    margin-top: 0;
+  }
+}
+
+/* ==========================================
+   ACTIVE ARTICLE TOC INDICATOR
+   ========================================== */
+
+.writing-article-toc li {
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+
+  transition: border-color 200ms ease;
+}
+
+.writing-article-toc li[data-level="3"] {
+  padding-left: 1.5rem;
+}
+
+.writing-article-toc li[data-active="true"] {
+  border-left-color: var(--color-amber);
+}
+
+.writing-article-toc li a {
+  display: block;
+
+  color: #929cab;
+
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.writing-article-toc li a:hover {
+  color: var(--color-text);
+}
+
+.writing-article-toc li[data-active="true"] a {
+  color: var(--color-amber);
+  font-weight: 600;
+}
+
+.writing-article-toc li[data-active="true"] a:hover {
+  color: var(--color-amber);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .writing-article-toc li,
+  .writing-article-toc li a {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   PREVIOUS / NEXT ARTICLE NAVIGATION
+   ========================================== */
+
+.writing-article-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  max-width: 900px;
+  margin: 3.5rem auto 0;
+}
+
+.writing-article-nav-link {
+  display: flex;
+  min-width: 0;
+  min-height: 145px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+
+  padding: 1.2rem 1.3rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+
+  color: inherit;
+  background: rgb(23 35 51 / 35%);
+  text-decoration: none;
+
+  transition:
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease;
+}
+
+.writing-article-nav-link:hover {
+  border-color: rgb(82 125 255 / 55%);
+  background: rgb(23 35 51 / 65%);
+  transform: translateY(-3px);
+}
+
+.writing-article-nav-link:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+.writing-article-nav-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.09em;
+}
+
+.writing-article-nav-title {
+  color: var(--color-text);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.3;
+
+  transition: color 200ms ease;
+}
+
+.writing-article-nav-link:hover .writing-article-nav-title {
+  color: var(--color-amber);
+}
+
+.writing-article-nav-category {
+  color: var(--color-muted);
+  font-size: 0.68rem;
+}
+
+.writing-article-nav-older {
+  text-align: right;
+  align-items: flex-end;
+}
+
+@media (max-width: 600px) {
+  .writing-article-navigation {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+    margin-top: 2.5rem;
+  }
+
+  .writing-article-nav-link {
+    min-height: 120px;
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .writing-article-nav-link {
+    transition: none;
+  }
+
+  .writing-article-nav-link:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   WRITING ARTICLE — NOT FOUND
+   ========================================== */
+
+.writing-not-found-page {
+  min-height: 75svh;
+}
+
+.writing-not-found-shell {
+  display: flex;
+  min-height: 65svh;
+  align-items: center;
+  justify-content: center;
+
+  padding-block: 4rem;
+}
+
+.writing-not-found-content {
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.writing-not-found-kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.writing-not-found-code {
+  margin: 2rem 0 0;
+
+  color: rgb(82 125 255 / 14%);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(7rem, 20vw, 13rem);
+  font-weight: 600;
+  letter-spacing: -0.09em;
+  line-height: 0.85;
+}
+
+.writing-not-found-content h1 {
+  margin: 1.25rem 0 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+}
+
+.writing-not-found-content h1 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.writing-not-found-description {
+  max-width: 580px;
+  margin: 1rem 0 0;
+
+  color: #bac2ce;
+
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+.writing-not-found-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-top: 2rem;
+  padding: 0.85rem 1.15rem;
+
+  border: 1px solid rgb(245 173 70 / 35%);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-amber);
+  background: rgb(245 173 70 / 5%);
+
+  font-size: 0.8rem;
+  text-decoration: none;
+
+  transition:
+    gap 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.writing-not-found-link:hover {
+  gap: 1rem;
+
+  border-color: var(--color-amber);
+  background: rgb(245 173 70 / 10%);
+}
+
+.writing-not-found-link:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .writing-not-found-shell {
+    min-height: 60svh;
+    padding-block: 3rem;
+  }
+
+  .writing-not-found-kicker {
+    font-size: 0.54rem;
+  }
+
+  .writing-not-found-code {
+    margin-top: 2.5rem;
+  }
+}
+
+/* ==========================================
+   WRITING ARCHIVE — CATEGORY FILTERS
+   ========================================== */
+
+.writing-archive-filters {
+  margin-block: 1.75rem 1.5rem;
+}
+
+.writing-topic-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  padding: 0.5rem 0.75rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: #c4ccd7;
+  background: rgb(23 35 51 / 48%);
+
+  font: inherit;
+  font-size: 0.7rem;
+  line-height: 1.4;
+
+  cursor: pointer;
+
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.writing-topic-filter:hover {
+  border-color: rgb(245 173 70 / 45%);
+  color: var(--color-text);
+}
+
+.writing-topic-filter.is-active {
+  border-color: rgb(245 173 70 / 55%);
+  color: var(--color-amber);
+  background: rgb(245 173 70 / 9%);
+}
+
+.writing-topic-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 1.3rem;
+  height: 1.3rem;
+  padding-inline: 0.35rem;
+
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+
+  color: var(--color-muted);
+  background: rgb(11 15 22 / 55%);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.58rem;
+  line-height: 1;
+}
+
+.writing-topic-filter.is-active .writing-topic-count {
+  border-color: rgb(245 173 70 / 35%);
+  color: var(--color-amber);
+}
+
+.writing-topic-filter:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .writing-topic-filter {
+    transition: none;
+  }
+}
+
+/* Cover fallback fills the existing 16:9 image container. */
+.writing-article-cover .writing-article-image-fallback {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+/* Keep filter announcements available to screen readers without
+   adding another visible element to the archive layout. */
+.writing-filter-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
