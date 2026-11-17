@@ -18,13 +18,7 @@ const navigationItems: NavigationItem[] = [
     label: "Sports Programming",
     href: "/competitive-programming",
   },
-  { label: "Systems", href: "#systems", sectionId: "systems" },
-  { label: "Writing", href: "/writing"},
-  {
-    label: "Experience",
-    href: "#experience",
-    sectionId: "experience",
-  },
+  { label: "Writing", href: "/writing" },
   { label: "Toolkit", href: "#toolkit", sectionId: "toolkit" },
   { label: "Contact", href: "#contact", sectionId: "contact" },
 ];
