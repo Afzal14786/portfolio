@@ -289,96 +289,220 @@
 }
 
 /* ==========================================
-   FOUNDATION SECTION
+   TOOLKIT — EDITORIAL TECHNOLOGY INDEX
    ========================================== */
 
-.foundation-section {
+.toolkit-section {
   border-top: 1px solid var(--color-line);
-
-  padding-block: 3.5rem;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
 }
 
-.section-label {
+.toolkit-heading {
   display: flex;
-  justify-content: space-between;
-
-  gap: 1rem;
-
-  font-size: 0.58rem;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.foundation-grid {
+.toolkit-intro {
   display: grid;
-  grid-template-columns: 1fr;
-
-  gap: 1.35rem;
-
-  margin-top: 1.8rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: end;
 }
 
-.foundation-grid h2 {
-  max-width: 750px;
+.toolkit-eyebrow {
+  margin: 0 0 0.8rem;
+  color: var(--color-amber);
 
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.toolkit-intro h2 {
   margin: 0;
+  color: var(--color-text);
 
-  font-size: clamp(2.2rem, 11vw, 3.75rem);
-  font-weight: 600;
-
-  letter-spacing: -0.07em;
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  font-weight: 650;
+  letter-spacing: -0.075em;
   line-height: 1.02;
-
-  text-wrap: balance;
 }
 
-.foundation-grid h2 em {
+.toolkit-intro h2 em {
   color: var(--color-amber);
 
   font-family: var(--font-cormorant), Georgia, serif;
   font-weight: 400;
 }
 
-.foundation-grid p {
+.toolkit-description {
   max-width: 460px;
-
   margin: 0;
 
   color: var(--color-muted);
-  line-height: 1.8;
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+/* The groups are presented as an editorial index, not individual cards. */
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 3rem;
+  row-gap: 2.25rem;
+
+  margin-top: 3rem;
+}
+
+.toolkit-group {
+  min-width: 0;
+  padding-top: 1.25rem;
+
+  border-top: 1px solid var(--color-line);
+}
+
+.toolkit-group-heading {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.75rem;
+}
+
+.toolkit-group-index {
+  padding-top: 0.15rem;
+
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+}
+
+.toolkit-group-heading h3 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.toolkit-group-heading p {
+  margin: 0.35rem 0 0;
+
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+/* Technology marks sit directly beside their names, without icon tiles. */
+.toolkit-items {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+
+  margin: 1.25rem 0 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.toolkit-item {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.8rem;
+
+  min-width: 0;
+  padding-block: 0.8rem;
+}
+
+.toolkit-item + .toolkit-item {
+  border-top: 1px solid var(--color-line);
+}
+
+.toolkit-technology-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.1rem;
+
+  flex-shrink: 0;
+}
+
+.toolkit-technology-icon svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+}
+
+.toolkit-item-copy {
+  min-width: 0;
+}
+
+.toolkit-item-copy h4 {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.45;
+}
+
+.toolkit-item-copy p {
+  margin: 0.25rem 0 0;
+
+  color: var(--color-muted);
+  font-size: 0.73rem;
+  line-height: 1.65;
 }
 
 /* ==========================================
-   FOUNDATION RESPONSIVENESS
+   TOOLKIT RESPONSIVENESS
    ========================================== */
 
 @media (min-width: 681px) {
-  .foundation-section {
+  .toolkit-section {
     padding-block: 5rem;
   }
 
-  .foundation-grid h2 {
-    font-size: clamp(2.5rem, 5.2vw, 4.5rem);
+  .toolkit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 820px) {
-  .foundation-grid {
+  .toolkit-intro {
     grid-template-columns:
       minmax(0, 1fr)
-      minmax(250px, 0.55fr);
-
-    align-items: end;
-
+      minmax(260px, 0.55fr);
     gap: 3rem;
-
-    margin-top: 2.5rem;
   }
 
-  .foundation-grid h2 {
-    font-size: clamp(2.5rem, 5.2vw, 5rem);
-  }
-
-  .foundation-section {
+  .toolkit-section {
     padding-block: clamp(3.5rem, 8vw, 7rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .toolkit-section .section-label {
+    font-size: 0.49rem;
+    letter-spacing: 0.06em;
+  }
+
+  .toolkit-description {
+    font-size: 0.88rem;
+  }
+
+  .toolkit-group-heading {
+    grid-template-columns: 1.7rem minmax(0, 1fr);
   }
 }
 
@@ -684,4 +808,199 @@
   .cp-preview-description {
     font-size: 0.88rem;
   }
+}
+
+/* ==========================================
+   CONTACT — EDITORIAL CLOSING SECTION
+   ========================================== */
+
+.contact-section {
+  border-top: 1px solid var(--color-line);
+  padding-block: clamp(4rem, 9vw, 8rem);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.75rem;
+
+  margin-top: 2.5rem;
+}
+
+.contact-eyebrow {
+  margin: 0 0 0.9rem;
+
+  color: var(--color-amber);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+}
+
+.contact-copy h2 {
+  max-width: 800px;
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 650;
+
+  letter-spacing: -0.075em;
+  line-height: 1.02;
+
+  text-wrap: balance;
+}
+
+.contact-copy h2 em {
+  color: var(--color-amber);
+
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+}
+
+.contact-description {
+  max-width: 570px;
+  margin: 1.5rem 0 0;
+
+  color: var(--color-muted);
+
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+/* Contact details stay text-led rather than using separate cards. */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 2rem;
+
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.contact-detail-label {
+  display: block;
+
+  margin-bottom: 0.8rem;
+
+  color: var(--color-muted);
+
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.13em;
+}
+
+.contact-email a {
+  display: inline-block;
+  max-width: 100%;
+
+  color: var(--color-text);
+
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+
+  overflow-wrap: anywhere;
+
+  text-decoration: underline;
+  text-decoration-color: rgb(240 241 244 / 22%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.4rem;
+
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease;
+}
+
+.contact-email a:hover {
+  color: var(--color-amber);
+  text-decoration-color: var(--color-amber);
+}
+
+/* Social links are intentionally presented as simple text links. */
+.contact-socials ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 0.65rem 1.35rem;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.contact-socials a {
+  color: var(--color-muted);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.contact-socials a:hover {
+  color: var(--color-amber);
+}
+
+.contact-section a:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 5px;
+}
+
+/* ==========================================
+   CONTACT RESPONSIVENESS
+   ========================================== */
+
+@media (min-width: 820px) {
+  .contact-section {
+    padding-block: clamp(4rem, 9vw, 8rem);
+  }
+
+  .contact-content {
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(260px, 0.65fr);
+
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
+
+    margin-top: 3rem;
+  }
+
+  .contact-details {
+    min-height: 230px;
+
+    justify-content: center;
+
+    padding: 1rem 0 1rem 2rem;
+    border-top: 0;
+    border-left: 1px solid var(--color-line);
+  }
+}
+
+@media (max-width: 380px) {
+  .contact-section .section-label {
+    font-size: 0.49rem;
+    letter-spacing: 0.06em;
+  }
+
+  .contact-description {
+    font-size: 0.88rem;
+  }
+
+  .contact-socials ul {
+    gap: 0.65rem 1rem;
+  }
+}
+
+.footer-heart {
+  flex-shrink: 0;
+  color: var(--color-amber);
 }
