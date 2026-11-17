@@ -33,7 +33,7 @@
 }
 
 /* ==========================================
-   FOOTER
+   SITE FOOTER
    ========================================== */
 
 .site-footer {
@@ -41,14 +41,121 @@
 }
 
 .footer-inner {
-  min-height: 4.5rem;
+  min-height: 5rem;
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
 
-  gap: 1rem;
+  gap: 1.5rem;
 
   color: var(--color-muted);
   font-size: 0.72rem;
+}
+
+.footer-copyright,
+.footer-note {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0.65rem;
+}
+
+.footer-location::before {
+  content: "·";
+  margin-right: 0.65rem;
+
+  color: var(--color-amber);
+}
+
+.footer-top-link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+
+  gap: 0.5rem;
+
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    gap 180ms ease;
+}
+
+.footer-top-link span {
+  color: var(--color-amber);
+  transition: transform 180ms ease;
+}
+
+.footer-top-link:hover {
+  gap: 0.75rem;
+  color: var(--color-text);
+}
+
+.footer-top-link:hover span {
+  transform: translateY(-2px);
+}
+
+.footer-top-link:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 5px;
+}
+
+/* ==========================================
+   FOOTER RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 680px) {
+  .footer-inner {
+    min-height: auto;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+
+    row-gap: 0.45rem;
+
+    padding-block: 1.25rem;
+  }
+
+  .footer-copyright {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .footer-note {
+    grid-column: 1;
+    grid-row: 2;
+
+    justify-content: flex-start;
+
+    font-size: 0.65rem;
+  }
+
+  .footer-top-link {
+    grid-column: 2;
+    grid-row: 1;
+
+    align-self: start;
+  }
+}
+
+@media (max-width: 380px) {
+  .footer-inner {
+    font-size: 0.65rem;
+  }
+
+  .footer-top-link {
+    font-size: 0.67rem;
+  }
 }
