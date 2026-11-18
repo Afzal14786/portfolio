@@ -1,6 +1,8 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 import Link from "next/link";
+
 import { featuredProjects } from "@/data/projects";
+import { ProjectTechnologyIcon } from "@/components/projects/project-technology-icon";
 
 export function Projects() {
   return (
@@ -78,20 +80,40 @@ export function Projects() {
                   : "IN DEVELOPMENT"}
               </span>
 
-              <a
-                className="project-repository-link"
-                href={project.repositoryUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`View ${project.name} source code on GitHub`}
-              >
-                View source
-                <ArrowUpRight aria-hidden="true" size={17} />
-              </a>
+              <div className="featured-project-links">
+                {project.docs && (
+                  <a
+                    className="project-repository-link"
+                    href={project.docs}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Read ${project.name} documentation`}
+                  >
+                    <BookOpen aria-hidden="true" size={15} />
+                    Documentation
+                    <ArrowUpRight aria-hidden="true" size={15} />
+                  </a>
+                )}
+
+                {project.repositoryUrl && (
+                  <a
+                    className="project-repository-link"
+                    href={project.repositoryUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${project.name} source code on GitHub`}
+                  >
+                    <ProjectTechnologyIcon technology="GitHub" />
+                    Source code
+                    <ArrowUpRight aria-hidden="true" size={15} />
+                  </a>
+                )}
+              </div>
             </aside>
           </article>
         ))}
       </div>
+
       <div className="featured-projects-footer">
         <p>There is more to explore beyond these selected projects.</p>
 
