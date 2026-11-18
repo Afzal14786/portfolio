@@ -1004,3 +1004,21 @@
   flex-shrink: 0;
   color: var(--color-amber);
 }
+
+/* Keep project documentation and repository links grouped together. */
+.featured-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 0.75rem 1rem;
+}
+
+/* Stack project actions alongside the metadata on wider layouts. */
+@media (min-width: 820px) {
+  .featured-project-links {
+    align-items: flex-end;
+    flex-direction: column;
+  }
+}
