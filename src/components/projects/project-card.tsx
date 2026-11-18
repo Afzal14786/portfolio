@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowUpRight, ExternalLink, House } from "lucide-react";
+import { ArrowUpRight, BookOpen, ExternalLink, House } from "lucide-react";
 
 import type { Project } from "@/data/projects";
 import { ProjectTechnologyIcon } from "./project-technology-icon";
@@ -136,24 +136,43 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </ul>
         </div>
 
-        {/* Repository and live links */}
+        {/* Only render links that are publicly available for this project. */}
         <div className="project-card-actions">
-          <a
-            href={project.repositoryUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="project-card-action project-card-action-primary"
-          >
-            <ProjectTechnologyIcon technology="GitHub" />
-            Source code
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+          {project.docs && (
+            <a
+              href={project.docs}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`project-card-action ${
+                !project.repositoryUrl ? "project-card-action-primary" : ""
+              }`}
+            >
+              <BookOpen size={15} aria-hidden="true" />
+              Documentation
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          )}
+
+          {project.repositoryUrl && (
+            <a
+              href={project.repositoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`project-card-action ${
+                !project.docs ? "project-card-action-primary" : ""
+              }`}
+            >
+              <ProjectTechnologyIcon technology="GitHub" />
+              Source code
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          )}
 
           {project.liveUrl && (
             <a
               href={project.liveUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="project-card-action"
             >
               Live demo
@@ -171,7 +190,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 key={link.url}
                 href={link.url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 {link.label}
                 <ExternalLink size={12} aria-hidden="true" />
