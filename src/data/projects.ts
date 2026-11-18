@@ -14,8 +14,9 @@ export interface Project {
   status: ProjectStatus;
   description: string;
   technologies: string[];
-  repositoryUrl: string;
+  repositoryUrl?: string;
   liveUrl?: string;
+  docs?: string;
   relatedLinks?: ProjectLink[];
   featured: boolean;
 }
@@ -43,7 +44,7 @@ export const projects: Project[] = [
       "Cloudinary",
     ],
     coverImage: "/images/projects/writespace/writespace.jpeg",
-    repositoryUrl: "https://github.com/Afzal14786/writespace",
+    docs: "https://writespace.gitbook.io/writespace-docs",
     featured: true,
   },
   {
